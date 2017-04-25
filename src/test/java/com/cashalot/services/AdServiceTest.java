@@ -1,15 +1,13 @@
 package com.cashalot.services;
 
-import com.cashalot.domain.AdContent;
-import com.cashalot.domain.AdTest;
-import com.cashalot.domain.Advertisement;
+import com.cashalot.domain.ad.content.AdContent;
+import com.cashalot.domain.ad.quiz.Quiz;
+import com.cashalot.domain.ad.Advertisement;
 import com.cashalot.domain.Subject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import static org.junit.Assert.*;
 
 
 public class AdServiceTest {
@@ -24,7 +22,7 @@ public class AdServiceTest {
     @Test
     public void createAdvertisement() throws Exception {
         AdContent content = Mockito.mock(AdContent.class);
-        AdTest test = Mockito.mock(AdTest.class);
+        Quiz test = Mockito.mock(Quiz.class);
         Subject subject = Mockito.mock(Subject.class);
 
         Advertisement ad = service.createAdvertisement(subject, content, test);

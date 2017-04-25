@@ -1,4 +1,8 @@
-package com.cashalot.domain;
+package com.cashalot.domain.ad;
+
+import com.cashalot.domain.Subject;
+import com.cashalot.domain.ad.content.AdContent;
+import com.cashalot.domain.ad.quiz.Quiz;
 
 /**
  * Created by VA-N_ on 19.04.2017.
@@ -10,12 +14,12 @@ public class Advertisement {
     private final long id;
     private Subject subject;
     private AdContent content;
-    private AdTest test;
+    private Quiz quiz;
 
-    public Advertisement(Subject subject, AdContent content, AdTest test) {
+    public Advertisement(Subject subject, AdContent content, Quiz quiz) {
         this.id = idCount++;
         this.subject = subject;
         this.content = content;
-        this.test = test;
+        this.quiz = quiz;
     }
 }
