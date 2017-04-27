@@ -24,7 +24,6 @@ public abstract class AdContent {
         return contentType;
     }
 
-
     public String getTopic() {
         return topic;
     }

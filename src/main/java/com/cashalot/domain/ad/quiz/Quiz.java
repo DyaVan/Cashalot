@@ -9,5 +9,7 @@ public interface Quiz {
 
     Iterable<String> getAnswerOptions();
 
+    String getAnswer();
+
 
 }

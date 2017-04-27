@@ -12,9 +12,5 @@ public class AdService {
         return new Advertisement(subject, content, test);
     }
 
-//    public Quiz createAdTest() {
-//        return
-//    }
-
 
 }

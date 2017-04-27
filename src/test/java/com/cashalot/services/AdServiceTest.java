@@ -30,4 +30,8 @@ public class AdServiceTest {
         Assert.assertNotNull(ad);
     }
 
+    public void createAdContent() {
+
+    }
+
 }

@@ -1,8 +1,6 @@
 package com.cashalot.domain.ad.content;
 
-/**
- * Created by Ivan_Diachuk on 4/25/2017.
- */
+
 public class VideoContent extends AdContent  {
 
     public VideoContent() {}
@@ -15,3 +13,6 @@ public class VideoContent extends AdContent  {
         return null;
     }
 }
+
+
+//http://htmlbook.ru/html/video
