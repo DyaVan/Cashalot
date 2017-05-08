@@ -3,6 +3,8 @@ package com.cashalot.domain;
 
 import com.cashalot.domain.ad.Advertisement;
 
+import java.util.Date;
+
 public class Pack {
 
     //id user array of userAnswers, array of ads, submited? approved?
@@ -16,6 +18,17 @@ public class Pack {
 
     boolean submitted = false;
     boolean approved = false;
+
+    /**
+     * Date till which the pack can still be sent back to the user
+     */
+    private Date expirationDate;
+
+    /**
+     * Date till which the pack is still located in the DB, but can be already
+     * expired and not convenient for sending to the user.
+     */
+    private Date deletionDate;
 
 
 }

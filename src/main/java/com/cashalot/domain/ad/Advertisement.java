@@ -4,9 +4,7 @@ import com.cashalot.domain.Subject;
 import com.cashalot.domain.ad.content.AdContent;
 import com.cashalot.domain.ad.quiz.Quiz;
 
-/**
- * Created by VA-N_ on 19.04.2017.
- */
+
 public class Advertisement {
 
     static long idCount = 1;
