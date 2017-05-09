@@ -1,19 +1,15 @@
-package com.cashalot.domain;
+package com.cashalot.domain.subject;
 
 /**
  * Created by VA-N_ on 25.04.2017.
  */
 public class Category {
 
-    static long idCount = 1;
-
-    private final long id;
+    private long id;
     private String name;
-
     private String description;
 
     public Category(String name, String description) {
-        this.id = idCount++;
         this.name = name;
         this.description = description;
     }

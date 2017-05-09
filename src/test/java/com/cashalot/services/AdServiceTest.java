@@ -1,9 +1,9 @@
 package com.cashalot.services;
 
-import com.cashalot.domain.ad.content.AdContent;
-import com.cashalot.domain.ad.quiz.Quiz;
+import com.cashalot.domain.ad.AdContent;
+import com.cashalot.domain.ad.Quiz;
 import com.cashalot.domain.ad.Advertisement;
-import com.cashalot.domain.Subject;
+import com.cashalot.domain.subject.Subject;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class AdServiceTest {
         Quiz test = Mockito.mock(Quiz.class);
         Subject subject = Mockito.mock(Subject.class);
 
-        Advertisement ad = service.createAdvertisement(subject, content, test);
+        Advertisement ad = service.createAdvertisement(subject, content, test,100);
 
         Assert.assertNotNull(ad);
     }

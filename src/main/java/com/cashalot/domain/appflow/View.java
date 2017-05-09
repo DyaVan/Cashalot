@@ -1,15 +1,14 @@
-package com.cashalot.domain;
+package com.cashalot.domain.appflow;
 
 
+import com.cashalot.domain.actors.User;
 import com.cashalot.domain.ad.Advertisement;
 
 import java.util.Date;
 
 public class View {
 
-    static long idCount = 1;
-
-    private final long id = idCount++;
+    private long id;
     private User user;
     private Advertisement ad;
     private Date date;

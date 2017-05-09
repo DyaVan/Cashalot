@@ -1,6 +1,7 @@
-package com.cashalot.domain;
+package com.cashalot.domain.actors;
 
-
+import com.cashalot.domain.ad.Advertisement;
+import com.cashalot.domain.subject.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +16,10 @@ public class User {
     private String password;
     private boolean banned;
 
-    private List<Advertiser> subscriptions = new ArrayList<Advertiser>();
-    private List<Category> interests = new ArrayList<Category>();
+    private List<Advertiser> subscriptions = new ArrayList<>();
+    private List<Category> interests = new ArrayList<>();
+
+    private List<Advertisement> bookmarks = new ArrayList<>();
 
     public User(String name, String email, String password) {
         this.name = name;
