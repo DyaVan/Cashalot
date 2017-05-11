@@ -13,6 +13,7 @@
 <body>
 <h1>Hello everybody!</h1>
 
+${category}
 
 
 </body>

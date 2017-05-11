@@ -28,16 +28,7 @@ public class AdContent {
     @Column
     private String beforeText;
 
-    private AdContent(String topic, String beforeText, String afterText, String contentType, String resource) {
-        this.resource = resource;
-        this.topic = topic;
-        this.contentType = contentType;
-        this.beforeText = beforeText;
-        this.afterText = afterText;
-    }
 
-    private AdContent() {
-    }
 
     public void setTopic(String topic) {
         this.topic = topic;

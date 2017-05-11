@@ -9,7 +9,11 @@ import javax.persistence.Table;
 @Table(name = "categories")
 public class Category {
 
+    public Category() {
+    }
+
     @Id
+
     private long id;
 
     @Column
@@ -45,5 +49,14 @@ public class Category {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

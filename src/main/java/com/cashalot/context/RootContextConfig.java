@@ -8,23 +8,26 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import javax.transaction.TransactionManager;
 
 @Configuration
 @EnableJpaRepositories(basePackages="com.cashalot.repository")
 public class RootContextConfig {
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource ds, JpaVendorAdapter vendorAdapter) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
-        emfb.setDataSource(ds);
+        emfb.setDataSource(dataSource());
         emfb.setPackagesToScan("com.cashalot.domain");
-        emfb.setJpaVendorAdapter(vendorAdapter);
+        emfb.setJpaVendorAdapter(vendorAdapter());
         return emfb;
     }
 
@@ -52,6 +55,13 @@ public class RootContextConfig {
         dataSource.setMaxIdle(15);
         dataSource.setMinIdle(2);
         return dataSource;
+    }
+
+    @Bean
+    public JpaTransactionManager transactionManager() {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+        return transactionManager;
     }
 
 //    @Profile("test")
