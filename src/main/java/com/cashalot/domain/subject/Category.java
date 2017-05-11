@@ -1,15 +1,30 @@
 package com.cashalot.domain.subject;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "categories")
 public class Category {
 
     @Id
     private long id;
+
+    @Column
     private String name;
+
+    @Column
     private String description;
+
+    public long getId() {
+        return id;
+    }
+
+    protected void setId(long id) {
+        this.id = id;
+    }
 
     public Category(String name, String description) {
         this.name = name;

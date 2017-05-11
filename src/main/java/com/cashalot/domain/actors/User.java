@@ -3,30 +3,92 @@ package com.cashalot.domain.actors;
 import com.cashalot.domain.ad.Advertisement;
 import com.cashalot.domain.subject.Category;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     private long id;
 
+    @Column
     private String name;
+
+    @Column
     private String email;
+
+    @Column
     private boolean banned;
 
+    @Column
+    private int age;
+
+    /**
+     * true if male
+     */
+
+    @Column
+    private boolean sex;
+
+    @ManyToMany
+    @JoinTable(name = "subscriptions",
+            joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "advertiserId", referencedColumnName = "id"))
     private List<Advertiser> subscriptions = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "interests",
+            joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "categoryId", referencedColumnName = "id"))
     private List<Category> interests = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(name = "bookmarks",
+            joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "advertisementId", referencedColumnName = "id"))
     private List<Advertisement> bookmarks = new ArrayList<>();
 
     public User(String name, String email) {
         this.name = name;
         this.email = email;
         this.banned = false;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    protected void setId(long id) {
+        this.id = id;
+    }
+
+    public List<Advertisement> getBookmarks() {
+
+        return bookmarks;
+    }
+
+    public void setBookmarks(List<Advertisement> bookmarks) {
+        this.bookmarks = bookmarks;
+    }
+
+    public int getAge() {
+
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public boolean isSex() {
+        return sex;
+    }
+
+    public void setSex(boolean sex) {
+        this.sex = sex;
     }
 
     public String getName() {
