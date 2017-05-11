@@ -44,7 +44,7 @@ CREATE TABLE `cashalotdb`.`categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `cashalotdb`.`contents` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `topic` varchar(45) NOT NULL,
   `beforeText` varchar(300) DEFAULT NULL,
   `afterText` varchar(300) DEFAULT NULL,
@@ -137,7 +137,7 @@ CREATE TABLE `cashalotdb`.`tagbindings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `cashalotdb`.`advertisements` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `cost` int(11) NOT NULL,
   `sexLimited` tinyint(4) NOT NULL DEFAULT '0',
   `sex` tinyint(4) DEFAULT NULL,
@@ -155,8 +155,8 @@ CREATE TABLE `cashalotdb`.`advertisements` (
   `quizId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_advertisement_subject_idx` (`subjectId`),
-  KEY `FK_advertisement_content_idx` (`contentId`),
   KEY `FK_advertisement_quiz_idx` (`quizId`),
+  KEY `FK_advertisement_content_idx` (`contentId`),
   CONSTRAINT `FK_advertisement_content` FOREIGN KEY (`contentId`) REFERENCES `contents` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_advertisement_quiz` FOREIGN KEY (`quizId`) REFERENCES `quizzes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_advertisement_subject` FOREIGN KEY (`subjectId`) REFERENCES `subjects` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -175,7 +175,7 @@ CREATE TABLE `cashalotdb`.`bookmarks` (
 
 
 CREATE TABLE `cashalotdb`.`views` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `advertisementId` int(11) NOT NULL,
   `date` date NOT NULL,
@@ -184,10 +184,11 @@ CREATE TABLE `cashalotdb`.`views` (
   `dislike` tinyint(4) DEFAULT '0',
   `comment` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_view_advertisement_idx` (`advertisementId`),
   KEY `FK_view_user_idx` (`userId`),
+  KEY `FK_view_advertisement_idx` (`advertisementId`),
   CONSTRAINT `FK_view_advertisement` FOREIGN KEY (`advertisementId`) REFERENCES `advertisements` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_view_user` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 
