@@ -2,11 +2,14 @@ package com.cashalot.domain.appflow;
 
 import com.cashalot.domain.ad.Advertisement;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
-
+@Entity
 public class PackSlot {
 
+    @Id
     private long id;
     private long packId;
     /**

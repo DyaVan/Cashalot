@@ -1,10 +1,12 @@
 package com.cashalot.domain.subject;
 
-/**
- * Created by VA-N_ on 25.04.2017.
- */
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Category {
 
+    @Id
     private long id;
     private String name;
     private String description;

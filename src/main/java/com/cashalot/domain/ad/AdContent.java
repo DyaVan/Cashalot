@@ -1,8 +1,13 @@
 package com.cashalot.domain.ad;
 
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class AdContent {
 
+    @Id
     private long id;
     private String topic;
     private String beforeText;

@@ -19,19 +19,19 @@ public class AdServiceTest {
 
     AdService service;
 
-    @Test
-    public void createAdvertisement() throws Exception {
-        AdContent content = Mockito.mock(AdContent.class);
-        Quiz test = Mockito.mock(Quiz.class);
-        Subject subject = Mockito.mock(Subject.class);
-
-        Advertisement ad = service.createAdvertisement(subject, content, test,100);
-
-        Assert.assertNotNull(ad);
-    }
-
-    public void createAdContent() {
-
-    }
+//    @Test
+//    public void createAdvertisement() throws Exception {
+//        AdContent content = Mockito.mock(AdContent.class);
+//        Quiz test = Mockito.mock(Quiz.class);
+//        Subject subject = Mockito.mock(Subject.class);
+//
+//        Advertisement ad = service.createAdvertisement(subject, content, test,100);
+//
+//        Assert.assertNotNull(ad);
+//    }
+//
+//    public void createAdContent() {
+//
+//    }
 
 }

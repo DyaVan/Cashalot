@@ -3,17 +3,19 @@ package com.cashalot.domain.actors;
 import com.cashalot.domain.ad.Advertisement;
 import com.cashalot.domain.subject.Category;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Entity
 public class User {
 
+    @Id
     private long id;
 
     private String name;
     private String email;
-    private String password;
     private boolean banned;
 
     private List<Advertiser> subscriptions = new ArrayList<>();
@@ -21,10 +23,9 @@ public class User {
 
     private List<Advertisement> bookmarks = new ArrayList<>();
 
-    public User(String name, String email, String password) {
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
-        this.password = password;
         this.banned = false;
     }
 
@@ -42,14 +43,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public List<Advertiser> getSubscriptions() {

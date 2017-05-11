@@ -1,7 +1,8 @@
 package com.cashalot.repository;
 
-/**
- * Created by Ivan_Diachuk on 4/27/2017.
- */
-public interface PackRepository {
+import com.cashalot.domain.appflow.Pack;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface PackRepository extends JpaRepository<Pack,Long> {
 }

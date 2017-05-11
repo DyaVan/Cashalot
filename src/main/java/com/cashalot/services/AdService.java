@@ -8,10 +8,10 @@ import com.cashalot.domain.subject.Subject;
 
 public class AdService {
 
-    public Advertisement createAdvertisement(Subject subject, AdContent content, Quiz test, int cost) {
-        return new Advertisement(subject, content, test, cost);
-    }
-
+//
+//public Advertisement createAdvertisement(Subject subject, AdContent content, Quiz test, int cost) {
+//        return new Advertisement(subject, content, test, cost);
+//    }
 
 //    public Pack preparePackForUser(User user){
 //

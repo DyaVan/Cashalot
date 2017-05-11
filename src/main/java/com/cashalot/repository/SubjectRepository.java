@@ -1,7 +1,9 @@
 package com.cashalot.repository;
 
-/**
- * Created by Ivan_Diachuk on 4/27/2017.
- */
-public interface SubjectRepository {
+
+import com.cashalot.domain.subject.Subject;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SubjectRepository extends JpaRepository<Subject,Long> {
+
 }

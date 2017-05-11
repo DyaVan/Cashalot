@@ -1,7 +1,9 @@
 package com.cashalot.repository;
 
-/**
- * Created by Ivan_Diachuk on 4/27/2017.
- */
-public interface AdvertiserRepository {
+
+import com.cashalot.domain.actors.Advertiser;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface AdvertiserRepository extends JpaRepository<Advertiser,Long>{
+
 }

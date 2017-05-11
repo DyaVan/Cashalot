@@ -1,7 +1,8 @@
 package com.cashalot.repository;
 
-/**
- * Created by Ivan_Diachuk on 4/27/2017.
- */
-public interface QuizRepository {
+import com.cashalot.domain.ad.Quiz;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface QuizRepository extends JpaRepository<Quiz,Long> {
 }
