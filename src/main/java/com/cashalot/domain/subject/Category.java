@@ -13,7 +13,6 @@ public class Category {
     }
 
     @Id
-
     private long id;
 
     @Column

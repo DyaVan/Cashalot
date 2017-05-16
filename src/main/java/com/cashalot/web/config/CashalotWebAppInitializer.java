@@ -9,8 +9,10 @@ import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import javax.servlet.annotation.MultipartConfig;
 
 public class CashalotWebAppInitializer implements WebApplicationInitializer{
 
@@ -18,6 +20,7 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
     public void onStartup(javax.servlet.ServletContext servletContext) throws ServletException {
         // root context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
+        rootContext.scan("com.cashalot.services","com.cashalot.properties");
         rootContext.register( RootContextConfig.class );
         servletContext.addListener(new ContextLoaderListener(rootContext));
 
@@ -30,6 +33,8 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
         ordinaryDispatcher.setLoadOnStartup(1);
         ordinaryDispatcher.addMapping("/Cashalot/*");
 
+
+
         // rest dispatcher servlet
         AnnotationConfigWebApplicationContext restWebContext = new AnnotationConfigWebApplicationContext();
         restWebContext.setParent(rootContext);
@@ -38,5 +43,9 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
                 servletContext.addServlet("restDispatcher", new DispatcherServlet(restWebContext));
         restDispatcher.setLoadOnStartup(1);
         restDispatcher.addMapping("/CashalotRest/*");
+
+        restDispatcher.setMultipartConfig(new MultipartConfigElement("D:\\Ivan_Diachuk\\Cashalot\\media\\tmp"));
     }
+
+
 }
