@@ -24,13 +24,4 @@ public class RestWebContextConfig extends WebMvcConfigurerAdapter {
     }
 
 
-
-//    @Override
-//    public void addFormatters (FormatterRegistry registry) {
-//        registry.addConverter((Converter<String, Tweet>) context.getBean("tweetConverter"));
-//    }
-
-
-
-
 }

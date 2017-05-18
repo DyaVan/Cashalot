@@ -13,12 +13,14 @@ public class WelcomeController {
     private CategoryRepository categoryRepository;
 
 
-    @RequestMapping("/")
+    @RequestMapping
     public String goHome(Model model) {
         System.out.println("sdsd");
         model.addAttribute("category", categoryRepository.findOne(1L));
         return "helloPage";
     }
+
+
 
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)

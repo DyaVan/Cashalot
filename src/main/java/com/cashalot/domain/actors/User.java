@@ -21,7 +21,7 @@ public class User {
     private String email;
 
     @Column
-    private boolean banned;
+    private boolean enabled;
 
     @Column
     private int age;
@@ -54,7 +54,7 @@ public class User {
     public User(String name, String email) {
         this.name = name;
         this.email = email;
-        this.banned = false;
+        this.enabled = false;
     }
 
     public long getId() {
@@ -139,11 +139,11 @@ public class User {
         subscriptions.remove(interestingAdvertiser);
     }
 
-    public boolean isBanned() {
-        return banned;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setBanned(boolean banned) {
-        this.banned = banned;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

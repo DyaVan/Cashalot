@@ -2,6 +2,7 @@ package com.cashalot.web.config;
 
 
 import com.cashalot.context.RootContextConfig;
+import com.cashalot.context.SecurityContextConfig;
 import com.cashalot.web.ordinary.context.WebContextConfig;
 import com.cashalot.web.rest.context.RestWebContextConfig;
 import org.springframework.web.WebApplicationInitializer;
@@ -21,7 +22,7 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
         // root context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.scan("com.cashalot.services","com.cashalot.properties");
-        rootContext.register( RootContextConfig.class );
+        rootContext.register( RootContextConfig.class, SecurityContextConfig.class );
         servletContext.addListener(new ContextLoaderListener(rootContext));
 
         // ordinary dispatcher servlet
@@ -31,7 +32,7 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
         ServletRegistration.Dynamic ordinaryDispatcher =
                 servletContext.addServlet("ordinaryDispatcher", new DispatcherServlet(ordinaryWebContext));
         ordinaryDispatcher.setLoadOnStartup(1);
-        ordinaryDispatcher.addMapping("/Cashalot/*");
+        ordinaryDispatcher.addMapping("/cashalot/*");
 
 
 
@@ -42,7 +43,7 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
         ServletRegistration.Dynamic restDispatcher=
                 servletContext.addServlet("restDispatcher", new DispatcherServlet(restWebContext));
         restDispatcher.setLoadOnStartup(1);
-        restDispatcher.addMapping("/CashalotRest/*");
+        restDispatcher.addMapping("/cashalot/rest/*");
 
         restDispatcher.setMultipartConfig(new MultipartConfigElement("D:\\Ivan_Diachuk\\Cashalot\\media\\tmp"));
     }

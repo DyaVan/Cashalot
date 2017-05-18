@@ -12,8 +12,8 @@ CREATE TABLE `cashalotdb`.`users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `banned` tinyint(1) NOT NULL DEFAULT '0',
+  `password` varchar(60) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '0',
   `sex` tinyint(4) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -190,5 +190,17 @@ CREATE TABLE `cashalotdb`.`views` (
   CONSTRAINT `FK_view_user` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `cashalotdb`.`roles` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `userEmail` VARCHAR(50) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `role_UNIQUE` (`role` ASC),
+  INDEX `FK_role_user_idx` (`userEmail` ASC),
+  CONSTRAINT `FK_role_user`
+  FOREIGN KEY (`userEmail`)
+  REFERENCES `cashalotdb`.`users` (`email`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 
