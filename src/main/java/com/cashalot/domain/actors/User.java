@@ -2,6 +2,7 @@ package com.cashalot.domain.actors;
 
 import com.cashalot.domain.ad.Advertisement;
 import com.cashalot.domain.subject.Category;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,6 +20,10 @@ public class User {
 
     @Column
     private String email;
+
+    @Column
+    private String password;
+
 
     @Column
     private boolean enabled;
@@ -51,11 +56,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "advertisementId", referencedColumnName = "id"))
     private List<Advertisement> bookmarks = new ArrayList<>();
 
-    public User(String name, String email) {
-        this.name = name;
-        this.email = email;
-        this.enabled = false;
-    }
+
 
     public long getId() {
         return id;
@@ -63,6 +64,15 @@ public class User {
 
     protected void setId(long id) {
         this.id = id;
+    }
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<Advertisement> getBookmarks() {

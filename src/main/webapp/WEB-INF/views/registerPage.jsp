@@ -11,19 +11,36 @@
 
 <form name='f' th:action='@{/login}' method='POST'>
     <table>
-        <tr><td>User:</td><td>
-            <label th:value="Username">
+
+        <tr><td>Name:</td>
+            <td><label th:value="name">
+                <input type='text' name='name'/>
+            </label></td></tr>
+
+        <tr><td>Email:</td><td>
+            <label th:value="email">
                 <input type='text' name='username' value=''/>
             </label></td></tr>
+
         <tr><td>Password:</td>
-            <td><label th:value="Password">
+            <td><label th:value="password">
                 <input type='password' name='password'/>
             </label></td></tr>
+
+        <tr><td>Sex</td>
+            <td><label th:value="sex">
+                <input type='radio' name='sex' value="male"/>
+                <input type='radio' name='sex' value="female"/>
+            </label></td></tr>
+
+        <tr><td>Age:</td>
+            <td><label th:value="age">
+                <input type='number' name='age'/>
+            </label></td></tr>
+
         <tr><td colspan='2'>
-            <input name="submit" type="submit" value="Login"/></td></tr>
-        Listing 9.8 A custom login page for the Spittr application (as a Thymeleaf template)
-        Submit to /login
-        Authenticating users 269
+            <input name="submit" type="submit" value="Register"/></td></tr>
+
     </table>
 </form>
 
