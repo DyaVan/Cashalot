@@ -9,7 +9,7 @@
 <body>
 
 <div>
-    <form method="POST" enctype="multipart/form-data" action="/CashalotRest/upload">
+    <form method="POST" enctype="multipart/form-data" action="/cashalot/rest/upload">
         <table>
             <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
             <tr><td></td><td><input type="submit" value="Upload" /></td></tr>

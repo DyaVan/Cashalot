@@ -13,7 +13,7 @@ CREATE TABLE `cashalotdb`.`users` (
   `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(60) NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '0',
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `sex` tinyint(4) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -191,16 +191,14 @@ CREATE TABLE `cashalotdb`.`views` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `cashalotdb`.`roles` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `userEmail` VARCHAR(50) NOT NULL,
-  `role` VARCHAR(45) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `roleName` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `role_UNIQUE` (`role` ASC),
-  INDEX `FK_role_user_idx` (`userEmail` ASC),
-  CONSTRAINT `FK_role_user`
-  FOREIGN KEY (`userEmail`)
-  REFERENCES `cashalotdb`.`users` (`email`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  UNIQUE KEY `role_UNIQUE` (`roleName`),
+  KEY `FK_role_user_idx` (`userId`),
+  CONSTRAINT `FK_role_user` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 

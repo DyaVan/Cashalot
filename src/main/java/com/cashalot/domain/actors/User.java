@@ -24,7 +24,6 @@ public class User {
     @Column
     private String password;
 
-
     @Column
     private boolean enabled;
 
@@ -37,6 +36,11 @@ public class User {
 
     @Column
     private boolean sex;
+
+
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    private List<Role> roles;
+
 
     @ManyToMany
     @JoinTable(name = "subscriptions",
@@ -155,5 +159,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }

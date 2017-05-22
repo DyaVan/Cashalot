@@ -1,26 +1,17 @@
 package com.cashalot;
 
-import com.cashalot.domain.ad.AdContent;
-
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Hello world!
- *
  */
-public class App
-{
-
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
-
-        List<AdContent> contents = new ArrayList<AdContent>();
+public class App {
 
 
+    public static void main(String[] args) {
 
-        contents.forEach(x -> System.out.println(x.getContentType()));
 
 
 

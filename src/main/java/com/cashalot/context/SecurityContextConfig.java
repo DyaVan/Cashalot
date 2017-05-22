@@ -1,5 +1,6 @@
 package com.cashalot.context;
 
+import com.cashalot.services.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,38 +38,43 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
         return templateEngine;
     }
 
+    @Bean
+    public AuthorizationService authorizationService(){
+        return new AuthorizationService();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .usersByUsernameQuery("select email as username, password, enabled" +
-                        "from users where email = ?")
-                .authoritiesByUsernameQuery("select email as username, role as authority" +
-                        "from roles where email = ?")
-                .passwordEncoder(passwordEncoder());
+        auth
+                .userDetailsService(authorizationService());
     }
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .formLogin()
-//                .loginPage("/login")
-//                .loginProcessingUrl("/login")
-                .successForwardUrl("/")
-                .failureForwardUrl("/login")
-                .and()
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()
                 .antMatchers("/reg").anonymous()
-                .antMatchers("/**").authenticated()
+                .antMatchers("/cashalot/myPage").authenticated()
+                .antMatchers("/cashalot/myPage/*").authenticated()
                 .anyRequest().permitAll()
                 .and()
-                .requiresChannel()
-                .antMatchers("/login").requiresSecure()
-                .antMatchers("/reg").requiresSecure()
+                .formLogin()
+//                .loginPage("/login")
+//                .loginProcessingUrl("/login")
+//                .successForwardUrl("/")
+//                .failureForwardUrl("/login")
+//                .and()
+//                .requiresChannel()
+//                .antMatchers("/login").requiresSecure()
+//                .antMatchers("/reg").requiresSecure()
                 .and()
                 .logout()
-                .logoutSuccessUrl("");
+                .logoutSuccessUrl("/");
     }
 }
+
+
+//                .loginPage("/login")
+//                .loginProcessingUrl("/login")

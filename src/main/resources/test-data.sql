@@ -1,0 +1,2 @@
+INSERT INTO `cashalotdb`.`categories` (`name`, `description`) VALUES ("Sport", "About sport");
+INSERT INTO `cashalotdb`.`users` (`name`, `email`, `password`,`sex`, `age`) VALUES ("ivan","ivan@mail.ru","1111", true, 21);

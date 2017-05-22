@@ -184,6 +184,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+                <version>3.6.1</version>
             </plugin>
 
             <plugin>
@@ -192,7 +193,7 @@
                 <version>9.4.2.v20170220</version>
                 <configuration>
                     <httpConnector>
-                        <!--host>localhost</host-->
+                        <host>localhost</host>
                         <port>8081</port>
                     </httpConnector>
                 </configuration>
