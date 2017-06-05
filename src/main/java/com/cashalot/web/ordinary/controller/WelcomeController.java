@@ -19,6 +19,11 @@ public class WelcomeController {
     @Autowired
     private UserRepository userRepository;
 
+    @RequestMapping(value = "/page/{dir}/{pageName}")
+    public String goHome(@PathVariable String dir,@PathVariable String pageName) {
+        return dir+"/"+pageName;
+    }
+
     @RequestMapping
     public String goHome(Model model) {
         model.addAttribute("category", categoryRepository.findOne(1L));

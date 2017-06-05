@@ -1,9 +1,8 @@
 package com.cashalot.domain.ad;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.cashalot.domain.actors.Advertiser;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,9 +13,6 @@ public class Quiz {
     private long id;
 
     @Column
-    private String quizType;
-
-    @Column
     private String questionText;
 
     @Column
@@ -25,9 +21,10 @@ public class Quiz {
     @Column
     private String answer;
 
-    public String getType(){
-        return quizType;
-    }
+    @ManyToOne
+    @JoinColumn(name = "advertiserId", nullable = false)
+    private Advertiser advertiser;
+
 
     public List<String> getAnswerOptions(){
         throw new UnsupportedOperationException();
@@ -45,17 +42,8 @@ public class Quiz {
         this.id = id;
     }
 
-
     public long getId() {
         return id;
-    }
-
-    public String getQuizType() {
-        return quizType;
-    }
-
-    public void setQuizType(String quizType) {
-        this.quizType = quizType;
     }
 
     public void setQuestionText(String questionText) {

@@ -26,11 +26,6 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
     DataSource dataSource;
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public SpringTemplateEngine templateEngine(TemplateResolver templateResolver) {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
@@ -39,14 +34,20 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public AuthorizationService authorizationService(){
+    public AuthorizationService authorizationService() {
         return new AuthorizationService();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
-                .userDetailsService(authorizationService());
+                .userDetailsService(authorizationService())
+                .passwordEncoder(passwordEncoder());
     }
 
 

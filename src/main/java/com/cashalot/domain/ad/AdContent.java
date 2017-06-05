@@ -1,10 +1,9 @@
 package com.cashalot.domain.ad;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.cashalot.domain.actors.Advertiser;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "contents")
@@ -28,7 +27,9 @@ public class AdContent {
     @Column
     private String beforeText;
 
-
+    @ManyToOne
+    @JoinColumn(name = "advertiserId", nullable = false)
+    private Advertiser advertiser;
 
     public void setTopic(String topic) {
         this.topic = topic;
