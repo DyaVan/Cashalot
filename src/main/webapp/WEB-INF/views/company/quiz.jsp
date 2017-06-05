@@ -17,7 +17,7 @@
         <br>
         <br>
         <br>
-        <a href="newOrder" class="btn btn-primary">
+        <a href="quizzes" class="btn btn-primary">
             <span class="glyphicon glyphicon-arrow-left"></span>
             К списку вопросов
         </a>
