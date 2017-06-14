@@ -58,19 +58,19 @@ public class Order {
     @Column
     private int viewsPerUser;
 
-    @OneToOne(optional = false)
+    @OneToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "advertiserId", nullable = false)
     private Advertiser advertiser;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "subjectId", nullable = false)
     private Subject subject;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "contentId", nullable = false)
     private AdContent content;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "quizId", nullable = false)
     private Quiz quiz;
 

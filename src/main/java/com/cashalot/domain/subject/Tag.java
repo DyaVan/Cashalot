@@ -13,7 +13,7 @@ public class Tag {
     @Column
     private String name;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "tags")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
     private List<Subject> subjectsWithTag;
 
     public long getId() {

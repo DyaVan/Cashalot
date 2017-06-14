@@ -1,6 +1,8 @@
 package com.cashalot.web.config;
 
 
+//import com.cashalot.context.HttpSessionConfig;
+import com.cashalot.context.PersistenceJPAConfig;
 import com.cashalot.context.RootContextConfig;
 import com.cashalot.context.SecurityContextConfig;
 import com.cashalot.web.ordinary.context.WebContextConfig;
@@ -22,7 +24,10 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
         // root context
         AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         rootContext.scan("com.cashalot.services","com.cashalot.properties");
-        rootContext.register( RootContextConfig.class, SecurityContextConfig.class );
+        rootContext.register(
+                RootContextConfig.class,
+                SecurityContextConfig.class,
+                PersistenceJPAConfig.class);
         servletContext.addListener(new ContextLoaderListener(rootContext));
 
         // ordinary dispatcher servlet

@@ -21,7 +21,7 @@ public class Quiz {
     @Column
     private String answer;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "advertiserId", nullable = false)
     private Advertiser advertiser;
 

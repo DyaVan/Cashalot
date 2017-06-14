@@ -1,5 +1,6 @@
-<<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <html>
 <head>
     <title>Registration</title>
@@ -30,82 +31,51 @@
 
     <div class="col-md-7">
 
-        <form>
+        <sf:form modelAttribute="user" htmlEscape="true"
+                 action="register" method="post">
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Name</span>
+                <sf:input  type="text" class="form-control"  path="name" placeholder="Full Name"/>
+            </div>
+            <sf:errors path="name" />
+
+            <br>
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                <sf:input id="email" type="text" class="form-control" path="email" placeholder="Email"/>
             </div>
+            <sf:errors path="name" />
+
             <br>
             <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                <sf:input id="password" type="password" class="form-control" path="password" placeholder="Password"/>
             </div>
+            <sf:errors path="password" />
 
             <br>
             <div class="input-group">
-                <span class="input-group-addon">Пол</span>
-                <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+                <span class="input-group-addon">Sex</span>
+                <sf:select path="sex" placeholder="Sex" class="form-control" id="sex-selext">
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </sf:select>
             </div>
+            <sf:errors path="sex" />
+
             <br>
             <div class="input-group">
-                <span class="input-group-addon">Возраст</span>
-                <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
+                <span class="input-group-addon">Age</span>
+                <sf:input  type="number" min="0" max="120" class="form-control" path="age" placeholder="Age"/>
             </div>
-            <br>
-            <div class="input-group">
-                <span class="input-group-addon">Город</span>
-                <input id="msg" type="text" class="form-control" name="msg" placeholder="Additional Info">
-            </div>
+            <sf:errors path="age" />
 
             <br>
-            <div>
-                <p>Выберете интересные для себя темы.</p>
 
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Интересы:</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Спорт</td>
-                        <td><button class="btn btn-danger">Удалить</button></td>
-                    </tr>
-                    <tr>
-                        <td>Развлечения</td>
-                        <td><button class="btn btn-danger">Удалить</button></td>
-                    </tr>
+            <input type="submit" class="btn btn-success" value="Регистрация"/>
+        </sf:form>
 
-                    </tbody>
-                </table>
-
-                <div>
-                    <div class="form-group">
-                        <label for="sel1">Еще интересные темы:</label>
-                        <select class="form-control" id="sel1">
-                            <option>Спорт</option>
-                            <option>Развлечения</option>
-                            <option>Наука</option>
-                            <option>Армейское дело</option>
-                            <option>Политика</option>
-                            <option>Финансы</option>
-                        </select>
-                        <br>
-                        <button class="btn btn-info">Добавить интерес</button>
-                        <br>
-                    </div>
-                </div>
-
-
-            </div>
-
-
-
-        </form>
-
-        <button class="btn btn-success">Регистрация</button>
     </div>
 
 

@@ -53,16 +53,16 @@ public class Advertisement {
     @Column
     private int viewsPerUser;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "subjectId", nullable = false)
     private Subject subject;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "contentId", nullable = false)
     private AdContent content;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "quizId", nullable = false)
     private Quiz quiz;
 

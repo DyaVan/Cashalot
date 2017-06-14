@@ -7,24 +7,12 @@ import javax.persistence.*;
 public class Role {
 
     @Id
-    private int id;
+    private long id;
 
     @Column
     private String roleName;
 
-    @ManyToOne
-    @JoinColumn(name = "userId",referencedColumnName = "id")
-    private User user;
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -39,4 +27,34 @@ public class Role {
     public void setRoleName(String roleName) {
         this.roleName = roleName;
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
+//    private AuthorizationDetails authorizationDetails;
+
+//    @ManyToOne(fetch = FetchType.LAZY,)
+//    @JoinColumn(name = "userId",referencedColumnName = "id")
+//    private User user;
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }

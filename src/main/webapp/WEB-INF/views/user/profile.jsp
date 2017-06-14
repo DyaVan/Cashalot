@@ -64,6 +64,49 @@
         </div>
 
 
+        <div>
+            <p>Выберете интересные для себя темы.</p>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Интересы:</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Спорт</td>
+                    <td><button class="btn btn-danger">Удалить</button></td>
+                </tr>
+                <tr>
+                    <td>Развлечения</td>
+                    <td><button class="btn btn-danger">Удалить</button></td>
+                </tr>
+
+                </tbody>
+            </table>
+
+            <div>
+                <div class="form-group">
+                    <label for="sel1">Еще интересные темы:</label>
+                    <select class="form-control" id="sel1">
+                        <option>Спорт</option>
+                        <option>Развлечения</option>
+                        <option>Наука</option>
+                        <option>Армейское дело</option>
+                        <option>Политика</option>
+                        <option>Финансы</option>
+                    </select>
+                    <br>
+                    <button class="btn btn-info">Добавить интерес</button>
+                    <br>
+                </div>
+            </div>
+
+
+        </div>
+
     </div>
 
 </div>

@@ -27,8 +27,8 @@ public class AdContent {
     @Column
     private String beforeText;
 
-    @ManyToOne
-    @JoinColumn(name = "advertiserId", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "advertiserId", referencedColumnName = "id")
     private Advertiser advertiser;
 
     public void setTopic(String topic) {

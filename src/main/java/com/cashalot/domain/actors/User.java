@@ -2,9 +2,15 @@ package com.cashalot.domain.actors;
 
 import com.cashalot.domain.ad.Advertisement;
 import com.cashalot.domain.subject.Category;
+import com.cashalot.validation.annotations.UniqueEmail;
+import com.cashalot.validation.annotations.ValidEmail;
 import org.hibernate.annotations.Fetch;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,44 +28,31 @@ public class User {
     private String email;
 
     @Column
-    private String password;
-
-    @Column
-    private boolean enabled;
-
-    @Column
     private int age;
 
     /**
      * true if male
      */
-
     @Column
     private boolean sex;
 
-
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
-    private List<Role> roles;
-
-
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "subscriptions",
             joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "advertiserId", referencedColumnName = "id"))
     private List<Advertiser> subscriptions = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "interests",
             joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "categoryId", referencedColumnName = "id"))
     private List<Category> interests = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "bookmarks",
             joinColumns = @JoinColumn(name = "userId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "advertisementId", referencedColumnName = "id"))
     private List<Advertisement> bookmarks = new ArrayList<>();
-
 
 
     public long getId() {
@@ -70,17 +63,7 @@ public class User {
         this.id = id;
     }
 
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public List<Advertisement> getBookmarks() {
-
         return bookmarks;
     }
 
@@ -153,19 +136,16 @@ public class User {
         subscriptions.remove(interestingAdvertiser);
     }
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("User{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", email='").append(email).append('\'');
+        sb.append(", age=").append(age);
+        sb.append(", sex=").append(sex);
+        sb.append(", subscriptions=").append(subscriptions);
+        sb.append('}');
+        return sb.toString();
     }
 }

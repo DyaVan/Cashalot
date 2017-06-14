@@ -30,11 +30,11 @@ public class PackSlot {
     @Column
     private String comment;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "packId",referencedColumnName = "id")
     private Pack pack;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "advertisementId",referencedColumnName = "id")
     private Advertisement ad;
 

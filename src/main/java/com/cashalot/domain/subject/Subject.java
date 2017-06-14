@@ -24,15 +24,15 @@ public class Subject {
     private String webLink;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "advertiserId", nullable = false)
     private Advertiser advertiser;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "categoryId", nullable = false)
     private Category category;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tagbindings",
             joinColumns = @JoinColumn(name = "subjectId", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "tagId", referencedColumnName = "id"))
