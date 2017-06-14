@@ -64,10 +64,14 @@ CREATE TABLE `cashalot2`.`contents` (
   `afterText` varchar(300) DEFAULT NULL,
   `resource` varchar(200) NOT NULL,
   `contentType` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  `advertiserId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_content_advertiser_idx` (`advertiserId`),
+  CONSTRAINT `FK_content_advertiser` FOREIGN KEY (`advertiserId`) REFERENCES `advertisers` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `quizzes` (
+
+CREATE TABLE `cashalot2`.`quizzes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `advertiserId` int(11) NOT NULL,
   `questionText` varchar(200) NOT NULL,
@@ -122,7 +126,7 @@ CREATE TABLE `cashalot2`.`interests` (
   CONSTRAINT `FK_interest_category` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `orders` (
+CREATE TABLE `cashalot2`.`orders` (
   `id` int(11) NOT NULL,
   `advertiserId` int(11) NOT NULL,
   `subjectId` int(11) NOT NULL,
@@ -153,7 +157,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `packs` (
+CREATE TABLE `cashalot2`.`packs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `submitted` tinyint(4) NOT NULL,
@@ -181,7 +185,7 @@ CREATE TABLE `cashalot2`.`packslots` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `referallinks` (
+CREATE TABLE `cashalot2`.`referallinks` (
   `inviterId` int(11) NOT NULL,
   `inviteeId` int(11) NOT NULL,
   PRIMARY KEY (`inviterId`,`inviteeId`),
@@ -191,7 +195,7 @@ CREATE TABLE `referallinks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TABLE `subscriptions` (
+CREATE TABLE `cashalot2`.`subscriptions` (
   `userId` int(11) NOT NULL,
   `advertiserId` int(11) NOT NULL,
   PRIMARY KEY (`userId`,`advertiserId`),
@@ -219,7 +223,7 @@ CREATE TABLE `cashalot2`.`tagbindings` (
   CONSTRAINT `FK_tagBinding_tag` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `views` (
+CREATE TABLE `cashalot2`.`views` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `advertisementId` int(11) NOT NULL,

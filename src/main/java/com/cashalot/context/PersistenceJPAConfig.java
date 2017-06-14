@@ -28,7 +28,7 @@ public class PersistenceJPAConfig {
     public DataSource dataSource(){
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/cashalotdb");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/cashalot2");
         dataSource.setUsername("root");
         dataSource.setPassword("0000");
         dataSource.setInitialSize(5);
