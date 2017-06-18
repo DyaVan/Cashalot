@@ -11,4 +11,6 @@ public interface AdvertiserRepository extends JpaRepository<Advertiser,Long>{
     @Override
     @Transactional
     Advertiser findOne(Long aLong);
+
+    Advertiser findByEmailLogin(String emailLogin);
 }

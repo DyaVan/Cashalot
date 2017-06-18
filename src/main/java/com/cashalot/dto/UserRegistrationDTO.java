@@ -16,7 +16,6 @@ public class UserRegistrationDTO {
     @Size(min = 3, max = 50)
     private String name;
 
-    @NotEmpty
     @ValidEmail
     @UniqueEmail
     private String email;

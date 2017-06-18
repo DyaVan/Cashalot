@@ -10,12 +10,12 @@ import com.cashalot.web.rest.context.RestWebContextConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import javax.servlet.MultipartConfigElement;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
+import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
+import java.util.EnumSet;
 
 public class CashalotWebAppInitializer implements WebApplicationInitializer{
 
@@ -51,6 +51,8 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
         restDispatcher.addMapping("/cashalot/rest/*");
 
         restDispatcher.setMultipartConfig(new MultipartConfigElement("D:\\Ivan_Diachuk\\Cashalot\\media\\tmp"));
+
+
     }
 
 

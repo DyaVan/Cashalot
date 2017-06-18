@@ -16,6 +16,10 @@ public class Tag {
     @ManyToMany(fetch = FetchType.EAGER, mappedBy = "tags")
     private List<Subject> subjectsWithTag;
 
+    public Tag(String name) {
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }

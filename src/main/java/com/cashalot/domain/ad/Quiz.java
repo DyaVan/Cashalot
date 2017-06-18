@@ -22,12 +22,12 @@ public class Quiz {
     private String answer;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "advertiserId", nullable = false)
+    @JoinColumn(name = "advertiserId", referencedColumnName = "id")
     private Advertiser advertiser;
 
 
-    public List<String> getAnswerOptions(){
-        throw new UnsupportedOperationException();
+    public String getAnswerOptions(){
+        return answerOptions;
     }
 
     public String getAnswer(){
@@ -58,4 +58,11 @@ public class Quiz {
         this.answer = answer;
     }
 
+    public Advertiser getAdvertiser() {
+        return advertiser;
+    }
+
+    public void setAdvertiser(Advertiser advertiser) {
+        this.advertiser = advertiser;
+    }
 }

@@ -3,6 +3,7 @@ package com.cashalot.context;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.ViewResolver;
 import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
@@ -11,7 +12,9 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 
 @Configuration
-@ComponentScan(basePackages = {"com.cashalot.services","com.cashalot.validation"})
+@ComponentScan(basePackages = {"com.cashalot.services",
+        "com.cashalot.validation",
+        "com.cashalot.properties"})
 public class RootContextConfig {
 
     @Bean

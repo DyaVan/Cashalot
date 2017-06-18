@@ -19,7 +19,7 @@
         <br>
         <br>
 
-        <a href="home" class="btn btn-primary">
+        <a href="/cashalot/" class="btn btn-primary">
             <span class="glyphicon glyphicon-arrow-left"></span>
             На домашнюю страницу
         </a>

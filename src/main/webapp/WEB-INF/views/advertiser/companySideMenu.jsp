@@ -3,7 +3,7 @@
 
 
 <ul class="nav nav-stacked nav-tab-custom col-xs-12">
-    <li><a data-toggle="tab" href="../public/home">Домашняя страница</a></li>
+    <li><a data-toggle="tab" href="/cashalot/">Домашняя страница</a></li>
     <li><a data-toggle="tab" href="companyStatus">Кабинет</a></li>
     <li class="active"><a data-toggle="tab" href="advertisements">Действующая реклама</a></li>
     <li><a data-toggle="tab" href="newOrder">Новый заказ</a></li>

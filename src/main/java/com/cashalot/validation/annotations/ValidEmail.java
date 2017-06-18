@@ -1,6 +1,7 @@
 package com.cashalot.validation.annotations;
 
 import com.cashalot.validation.validators.CustomEmailValidator;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -15,6 +16,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 @Constraint(validatedBy = CustomEmailValidator.class)
 @Documented
+@NotEmpty
 public @interface ValidEmail {
     String message() default "Invalid email";
     Class<?>[] groups() default {};

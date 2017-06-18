@@ -16,11 +16,11 @@
 <div class="col-md-3"></div>
 <div class="col-md-6">
     <a href="/login" class="btn btn-default">Вход</a>
-    <a href="companyRegistration" class="btn btn-default">Регистрация для рекламодателей</a>
-    <a href="userRegistration" class="btn btn-default">Регистрация пользователей</a>
+    <a href="/cashalot/advertiser/register" class="btn btn-default">Регистрация для рекламодателей</a>
+    <a href="/cashalot/user/register" class="btn btn-default">Регистрация пользователей</a>
     <a href="rules.jsp" class="btn btn-default">Правила и интсрукции</a>
-    <a href="../user/statusPage" class="btn btn-default">Кабинет пользователя</a>
-    <a href="../company/companyStatus" class="btn btn-default">Кабинет рекламодателя</a>
+    <a href="/cashalot/user/" class="btn btn-default">Кабинет пользователя</a>
+    <a href="/cashalot/advertiser/" class="btn btn-default">Кабинет рекламодателя</a>
     <a href="../moderator/orders" class="btn btn-default">Кабинет модератора</a>
 </div>
 </body>

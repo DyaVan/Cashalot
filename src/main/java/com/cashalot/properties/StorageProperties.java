@@ -10,14 +10,13 @@ public class StorageProperties {
     /**
      * Folder location for storing files
      */
-    private String location = "D:\\Ivan_Diachuk\\Cashalot\\media";
+    private String imagesLocation = "D:\\Ivan_Diachuk\\Cashalot\\media";
+    private String videoLocation = "D:\\Ivan_Diachuk\\Cashalot\\media";
+    private String shitLocation = "D:\\Shit";
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public String getLocation(String contentType) {
+        return contentType.equals("image") ?
+                imagesLocation : contentType.equals("video") ? videoLocation : shitLocation;
     }
 
 }

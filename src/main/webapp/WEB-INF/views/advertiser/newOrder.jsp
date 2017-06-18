@@ -24,21 +24,13 @@
     <div class="col-md-7">
         <h2>Новый заказ</h2>
 
-        <div>
-            <div class="form-group">
-                <label for="topic">Тема:</label>
-                <input type="text" class="form-control" id="topic">
-            </div>
-        </div>
 
         <div class="form-group">
-            <label for="sel2"> Виберите продукт:</label>
-            <select class="form-control" id="sel2">
-                <option>Пшеничное пиво</option>
-                <option>Бухло</option>
-                <option>Темное кравтовое пиво</option>
-                <option>Пятничные скидки</option>
-                <option>Праздник 23 Июня!</option>
+            <label for="selSubj"> Виберите продукт:</label>
+            <select class="form-control" id="selSubj">
+                <c:forEach items="${advertiser.subjects}" var="subject">
+                    <option value="${subject.id}"><c:out value="${subject.name}" escapeXml="true"/></option>
+                </c:forEach>
             </select>
             <br>
             <a href="createSubject" class="btn btn-primary">Новый продукт</a>
@@ -47,13 +39,25 @@
 
         <div>
             <div class="form-group">
-                <label for="sel1">Выберите вопрос:</label>
-                <select class="form-control" id="sel1">
-                    <option>Какое на вкус пшеничное пиво?</option>
-                    <option>Какое новое пиво появилось в Пивной Думе?</option>
-                    <option>Когда бухичь?</option>
-                    <option>В честь чего устроен праздник в Пивной думе?</option>
-                    <option>Что привлекает в Думу людей по пятницам?</option>
+                <label for="selContents">Выберите контент:</label>
+                <select class="form-control" id="selContents">
+                    <c:forEach items="${advertiser.adContents}" var="adContent">
+                        <option value="${adContent.id}"><c:out value="${adContent.topic}" escapeXml="true"/></option>
+                    </c:forEach>
+                </select>
+                <br>
+                <a href="createContent" class="btn btn-primary">Новый контент</a>
+                <br>
+            </div>
+        </div>
+
+        <div>
+            <div class="form-group">
+                <label for="selQuiz">Выберите вопрос:</label>
+                <select class="form-control" id="selQuiz">
+                    <c:forEach items="${advertiser.quizzes}" var="quiz">
+                        <option value="${quiz.id}"><c:out value="${quiz.questionText}" escapeXml="true"/></option>
+                    </c:forEach>
                 </select>
                 <br>
                 <a href="createQuiz" class="btn btn-primary">Новый вопрос</a>
@@ -61,34 +65,6 @@
             </div>
         </div>
 
-        <div>
-            <div class="form-group">
-                <label for="sel3"> Выберите тип медиа файла:</label>
-                <select class="form-control" id="sel3">
-                    <option>Видео</option>
-                    <option>Изображение</option>
-                </select>
-            </div>
-        </div>
-        Загрузите медиа файл:
-        <div>
-            <input type="file" class="btn btn-default" value="ссілки.txt">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc3nOX9OFMpYjmi68pqfln1OSgCMAU0xbTJBdMaPISCZHnTgeJGA">
-        </div>
-
-        <div>
-            <div class="form-group">
-                <label for="beforeText">Текст перед медиа:</label>
-                <textarea class="form-control" rows="5" id="beforeText"></textarea>
-            </div>
-        </div>
-
-        <div>
-            <div class="form-group">
-                <label for="afterText">Текст после медиа:</label>
-                <textarea class="form-control" rows="5" id="afterText"></textarea>
-            </div>
-        </div>
 
         <div>
             <div class="form-group">

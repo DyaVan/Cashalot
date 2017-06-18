@@ -1,6 +1,12 @@
 package com.cashalot.domain.actors;
 
+import com.cashalot.domain.ad.AdContent;
+import com.cashalot.domain.ad.Quiz;
+import com.cashalot.domain.subject.Subject;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "advertisers")
@@ -22,6 +28,17 @@ public class Advertiser {
     private String additionalInfo;
     @Column
     private boolean notACompany;
+
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "advertiser")
+    private List<AdContent> adContents = new ArrayList();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "advertiser")
+    private List<Quiz> quizzes = new ArrayList();
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "advertiser")
+    private List<Subject> subjects = new ArrayList();
+
 
     //todo основные категории рекламодателя и вторичные, шоб на них можно было сразу подписаться
 
@@ -89,4 +106,30 @@ public class Advertiser {
     public void setNotACompany(boolean notACompany) {
         this.notACompany = notACompany;
     }
+
+
+    public List<AdContent> getAdContents() {
+        return adContents;
+    }
+
+    public void setAdContents(List<AdContent> adContents) {
+        this.adContents = adContents;
+    }
+
+    public List<Quiz> getQuizzes() {
+        return quizzes;
+    }
+
+    public void setQuizzes(List<Quiz> quizzes) {
+        this.quizzes = quizzes;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
 }

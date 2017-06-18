@@ -46,15 +46,26 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/login").anonymous()
-//                .antMatchers("/cashalot/page/public/loginPage").anonymous()
                 .antMatchers("/reg").anonymous()
+
+                .antMatchers("/cashalot/user").authenticated()
+                .antMatchers("/cashalot/user/**").authenticated()
+                .antMatchers("/cashalot/user").hasAnyAuthority("user")
+                .antMatchers("/cashalot/user/**").hasAnyAuthority("user")
+
+                .antMatchers("/cashalot/advertiser").authenticated()
+                .antMatchers("/cashalot/advertiser/**").authenticated()
+                .antMatchers("/cashalot/advertiser").hasAnyAuthority("advertiser")
+                .antMatchers("/cashalot/advertiser/**").hasAnyAuthority("advertiser")
+
                 .antMatchers("/cashalot/myPage").authenticated()
-                .antMatchers("/cashalot/myPage/*").authenticated()
+                .antMatchers("/cashalot/myPage/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .and()
                 .logout()
+                .logoutUrl("/cashalot/logout")
                 .logoutSuccessUrl("/")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 //                .csrfTokenRepository(csrfTokenRepository());

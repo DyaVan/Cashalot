@@ -35,7 +35,6 @@ public class AuthorizationService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
         AuthorizationDetails authDetails = authDetailsRepo.findByEmail(email);
         if (authDetails != null) {
             List<GrantedAuthority> authorityList = new ArrayList<>();

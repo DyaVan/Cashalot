@@ -25,11 +25,11 @@ public class Subject {
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "advertiserId", nullable = false)
+    @JoinColumn(name = "advertiserId", referencedColumnName = "id")
     private Advertiser advertiser;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoryId", nullable = false)
+    @JoinColumn(name = "categoryId", referencedColumnName = "id", nullable = false)
     private Category category;
 
     @ManyToMany(fetch = FetchType.EAGER)

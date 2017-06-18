@@ -38,8 +38,8 @@ public class Pack {
     private Date expirationDate;
 
     /**
-     * Date till which the pack is still located in the DB, but can be already
-     * expired and not convenient for sending to the user.
+     * Date till which the pack is still located in the DB for checking answers,
+     * but can be already expired and not convenient for sending to the user.
      */
     @Column
     private Date deletionDate;

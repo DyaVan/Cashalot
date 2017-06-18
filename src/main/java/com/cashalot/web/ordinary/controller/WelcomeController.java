@@ -1,5 +1,6 @@
 package com.cashalot.web.ordinary.controller;
 
+import com.cashalot.dto.TestDTO;
 import com.cashalot.repository.CategoryRepository;
 import com.cashalot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,24 @@ public class WelcomeController {
     @Autowired
     private UserRepository userRepository;
 
+
+    @RequestMapping(value = {"/","/home"})
+    public String goHome() {
+        return "public/home";
+    }
+
+
     @RequestMapping(value = "/page/{dir}/{pageName}")
     public String goHome(@PathVariable String dir,@PathVariable String pageName) {
         return dir+"/"+pageName;
     }
 
-    @RequestMapping
-    public String goHome(Model model) {
-        model.addAttribute("category", categoryRepository.findOne(1L));
-        return "helloPage";
-    }
+
+
+
+
+
+
 
     @RequestMapping(value = "/myPage")
     @Transactional
@@ -43,7 +52,7 @@ public class WelcomeController {
     }
 
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
-    public String showUploadPage(HttpServletRequest req) {
+    public String showUploadPage(HttpServletRequest req, @ModelAttribute(name = "test") TestDTO test) {
         return "uploadPage";
     }
 

@@ -25,6 +25,12 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping(value = "/")
+    public String cabinet() {
+        return "user/statusPage";
+    }
+
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showUserRegistrationForm(@ModelAttribute(name = "user") UserRegistrationDTO userDTO) {
         return "public/userRegistration";
@@ -44,7 +50,7 @@ public class UserController {
                 userDTO.getAge(),
                 userDTO.getPassword());
 
-        return "redirect:public/home";
+        return "redirect:/cashalot/home";
     }
 
 }

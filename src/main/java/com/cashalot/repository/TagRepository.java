@@ -6,4 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface TagRepository extends JpaRepository<Tag,Long> {
+
+    Tag findByName(String name);
+
 }
