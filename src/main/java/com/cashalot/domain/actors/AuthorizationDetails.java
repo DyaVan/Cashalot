@@ -8,6 +8,7 @@ import java.util.List;
 public class AuthorizationDetails {
 
     @Id
+    @GeneratedValue
     private long id;
 
     @Column

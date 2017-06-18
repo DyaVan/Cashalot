@@ -39,6 +39,7 @@ public class CashalotWebAppInitializer implements WebApplicationInitializer{
         ordinaryDispatcher.setLoadOnStartup(1);
         ordinaryDispatcher.addMapping("/cashalot/*");
 
+        ordinaryDispatcher.setMultipartConfig(new MultipartConfigElement("D:\\Ivan_Diachuk\\Cashalot\\media\\tmp"));
 
 
         // rest dispatcher servlet

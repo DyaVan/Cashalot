@@ -16,6 +16,7 @@ public class Pack {
     //id user array of userAnswers, array of ads, submited? approved?
 
     @Id
+    @GeneratedValue
     private long id;
 
     @ManyToOne(fetch = FetchType.EAGER)

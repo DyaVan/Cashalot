@@ -8,6 +8,7 @@ import java.util.List;
 public class Tag {
 
     @Id
+    @GeneratedValue
     private long id;
 
     @Column

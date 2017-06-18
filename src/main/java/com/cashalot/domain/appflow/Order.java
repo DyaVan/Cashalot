@@ -14,6 +14,7 @@ import java.util.Date;
 public class Order {
 
     @Id
+    @GeneratedValue
     private long id;
 
     @Column

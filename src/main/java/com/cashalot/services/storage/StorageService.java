@@ -1,6 +1,7 @@
 package com.cashalot.services.storage;
 
 import com.cashalot.properties.StorageProperties;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,12 +31,14 @@ public class StorageService {
     }
 
 
-    public void store(MultipartFile file,String contentType) {
+    public void store(MultipartFile file,String contentType, Long adContentId) {
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + file.getOriginalFilename());
             }
-            Files.copy(file.getInputStream(), this.getRootPath(contentType).resolve(file.getOriginalFilename()));
+            String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+            Files.copy(file.getInputStream(),
+                    this.getRootPath(contentType).resolve(adContentId.toString()+"."+ extension));
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + file.getOriginalFilename(), e);
         }

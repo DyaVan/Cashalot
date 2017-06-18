@@ -124,20 +124,22 @@ public class AdvertiserController {
     }
 
     @RequestMapping(value = "/createContent", method = RequestMethod.POST)
-    public String createQuiz(@RequestParam("file") MultipartFile file,
+    public String createQuiz(Principal principal,
                              @ModelAttribute(name = "content") @Valid ContentDTO contentDTO,
-                             Principal principal,
                              BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return "advertiser/createContent";
         }
 
-//        FilenameUtils
-
         String advertiserLoginEmail = principal.getName();
+        Advertiser advertiser = advertiserRepository.findByEmailLogin(advertiserLoginEmail);
 
-//        advertiserService.createContent(contentDTO);
+        advertiserService.createContent(contentDTO.getTopic(),
+                contentDTO.getContentType(),
+                contentDTO.getBeforeText(),
+                contentDTO.getAfterText(),
+                advertiser, contentDTO.getMediaFile());
 
         return "redirect:/cashalot/advertiser/newOrder";
     }

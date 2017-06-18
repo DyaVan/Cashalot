@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class AdContent {
 
     @Id
+    @GeneratedValue
     private long id;
 
     @Column
@@ -17,9 +18,6 @@ public class AdContent {
 
     @Column
     private String afterText;
-
-    @Column
-    private String resource;
 
     @Column
     private String contentType;
@@ -30,6 +28,14 @@ public class AdContent {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "advertiserId", referencedColumnName = "id")
     private Advertiser advertiser;
+
+    public Advertiser getAdvertiser() {
+        return advertiser;
+    }
+
+    public void setAdvertiser(Advertiser advertiser) {
+        this.advertiser = advertiser;
+    }
 
     public void setTopic(String topic) {
         this.topic = topic;
@@ -52,16 +58,8 @@ public class AdContent {
         this.afterText = afterText;
     }
 
-    public void setResource(String resource) {
-        this.resource = resource;
-    }
-
     public void setContentType(String contentType) {
         this.contentType = contentType;
-    }
-
-    public String getResource() {
-        return resource;
     }
 
     public final String getContentType() {
@@ -82,7 +80,7 @@ public class AdContent {
         return afterText;
     }
 
-    public  String toJsonString(){
+    public String toJsonString() {
         throw new UnsupportedOperationException();
     }
 

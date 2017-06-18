@@ -31,7 +31,7 @@
     <div class="col-md-7">
         <h2>Создание контента</h2>
 
-        <sf:form modelAttribute="content" method="post" htmlEscape="true" action="createContent">
+        <sf:form modelAttribute="content" enctype="multipart/form-data" method="post" htmlEscape="true" action="createContent">
 
             <div>
                 <div class="form-group">
@@ -45,17 +45,21 @@
                 <div class="form-group">
                     <label for="sel3"> Выберите тип медиа файла:</label>
                     <sf:select class="form-control" id="sel3" path="contentType">
-                        <option>Видео</option>
-                        <option>Изображение</option>
+                        <option value="video">Видео</option>
+                        <option value="image">Изображение</option>
                     </sf:select>
                 </div>
                 <sf:errors path="contentType"/>
             </div>
-            Загрузите медиа файл:
+            <br>
             <div>
-                <input type="file" class="btn btn-default" name="file">
+                <div class="form-group">
+                    <label for="mediaFile">Загрузите медиа файл:</label>
+                    <sf:input type="file" class="btn btn-default" id="mediaFile" path="mediaFile"/>
+                </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc3nOX9OFMpYjmi68pqfln1OSgCMAU0xbTJBdMaPISCZHnTgeJGA">
             </div>
+            <sf:errors path="mediaFile"/>
 
             <div>
                 <div class="form-group">

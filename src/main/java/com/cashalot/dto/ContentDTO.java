@@ -1,7 +1,9 @@
 package com.cashalot.dto;
 
 
+import com.cashalot.validation.annotations.ValidMediaFile;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.Size;
 
@@ -11,17 +13,26 @@ public class ContentDTO {
     @Size(min = 3,max = 100)
     private String topic;
 
-    @NotEmpty
-    @Size(min = 3,max = 100)
+    @Size(max = 700)
     private String afterText;
 
     @NotEmpty
     @Size(min = 5,max = 5)
     private String contentType;
 
-    @NotEmpty
-    @Size(min = 3,max = 700)
+    @Size(max = 700)
     private String beforeText;
+
+    @ValidMediaFile
+    private MultipartFile mediaFile;
+
+    public MultipartFile getMediaFile() {
+        return mediaFile;
+    }
+
+    public void setMediaFile(MultipartFile mediaFile) {
+        this.mediaFile = mediaFile;
+    }
 
     public String getTopic() {
         return topic;

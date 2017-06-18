@@ -12,6 +12,7 @@ import java.util.List;
 public class Subject {
 
     @Id
+    @GeneratedValue
     private long id;
 
     @Column

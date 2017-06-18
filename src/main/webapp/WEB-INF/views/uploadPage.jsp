@@ -19,13 +19,18 @@ a
         <sf:input path="strings"/>
         <sf:input path="strings"/>
 
+        <br>
+        File to upload:
+        <br>
+        <sf:input type="file" path="file"/>
+        <sf:errors path="file"/>
+
         <input type="hidden"
                name="${_csrf.parameterName}"
-               value="${_csrf.token}" />
-        <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-        </table>
+               value="${_csrf.token}"/>
+
+        <input type="submit" value="Upload"/></td></tr>
+
     </sf:form>
 </div>
 

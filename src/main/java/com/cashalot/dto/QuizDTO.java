@@ -1,5 +1,6 @@
 package com.cashalot.dto;
 
+import com.cashalot.validation.annotations.RightAmount;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
@@ -16,6 +17,7 @@ public class QuizDTO {
     @Size(min = 3, max = 50)
     private String answer;
 
+    @RightAmount
     List<String> answerOptions = new ArrayList<>();
 
     public String getQuestionText() {

@@ -34,12 +34,6 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
 //                .passwordEncoder(passwordEncoder());
     }
 
-//    @Bean
-//    public CsrfTokenRepository csrfTokenRepository() {
-//        HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
-//        repository.setSessionAttributeName("_csrf");
-//        return repository;
-//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -66,7 +60,7 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutUrl("/cashalot/logout")
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/cashalot/")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 //                .csrfTokenRepository(csrfTokenRepository());
 

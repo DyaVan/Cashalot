@@ -13,6 +13,7 @@ import java.util.List;
 public class Advertiser {
 
     @Id
+    @GeneratedValue
     private long id;
     @Column
     private String emailLogin;

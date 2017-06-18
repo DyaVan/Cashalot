@@ -2,15 +2,18 @@ package com.cashalot.services;
 
 import com.cashalot.domain.actors.Advertiser;
 import com.cashalot.domain.actors.AuthorizationDetails;
+import com.cashalot.domain.ad.AdContent;
 import com.cashalot.domain.ad.Quiz;
 import com.cashalot.domain.appflow.TagBinding;
 import com.cashalot.domain.subject.Category;
 import com.cashalot.domain.subject.Subject;
 import com.cashalot.domain.subject.Tag;
 import com.cashalot.repository.*;
+import com.cashalot.services.storage.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,5 +132,26 @@ public class AdvertiserService {
         newQuiz.setAdvertiser(advertiserRepository.findByEmailLogin(advertiserLoginEmail));
 
         quizRepository.save(newQuiz);
+    }
+
+    @Autowired
+    AdContentRepository adContentRepository;
+
+
+    @Autowired
+    private StorageService storageService;
+
+
+    public void createContent(String topic, String contentType, String beforeText, String afterText, Advertiser advertiser, MultipartFile mediaFile) {
+
+        AdContent newAdContent = new AdContent();
+        newAdContent.setTopic(topic);
+        newAdContent.setBeforeText(beforeText);
+        newAdContent.setAfterText(afterText);
+        newAdContent.setContentType(contentType);
+        newAdContent.setAdvertiser(advertiser);
+
+        AdContent adContent = adContentRepository.saveAndFlush(newAdContent);
+        storageService.store(mediaFile,contentType,adContent.getId());
     }
 }

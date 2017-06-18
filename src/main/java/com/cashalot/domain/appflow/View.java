@@ -12,6 +12,7 @@ import java.util.Date;
 public class View {
 
     @Id
+    @GeneratedValue
     private long id;
 
     @Column
