@@ -1,18 +1,21 @@
-<%--<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>--%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Ivan_Diachuk
-  Date: 5/16/2017
-  Time: 2:20 PM
-  To change this template use File | Settings | File Templates.
---%>
-<html xmlns:th="http://www.thymeleaf.org">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+<head>
+    <title>New Content</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 <body>
-<%--${sessionScope.get("sesa")}--%>
-a
 <div>
-    <sf:form modelAttribute="test" method="POST" enctype="multipart/form-data" action="/cashalot/rest/upload">
+    <sf:form modelAttribute="test" method="POST"
+             enctype="multipart/form-data" action="/cashalot/rest/upload">
+
+        <input type="hidden"
+               name="${_csrf.parameterName}"
+               value="${_csrf.token}"/>
+
 
         <sf:input path="str"/>
         <sf:input path="strings"/>
@@ -25,11 +28,7 @@ a
         <sf:input type="file" path="file"/>
         <sf:errors path="file"/>
 
-        <input type="hidden"
-               name="${_csrf.parameterName}"
-               value="${_csrf.token}"/>
-
-        <input type="submit" value="Upload"/></td></tr>
+        <input type="submit" value="Upload"/>
 
     </sf:form>
 </div>
