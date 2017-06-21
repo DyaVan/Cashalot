@@ -21,7 +21,7 @@
     <a href="rules.jsp" class="btn btn-default">Правила и интсрукции</a>
     <a href="/cashalot/user/" class="btn btn-default">Кабинет пользователя</a>
     <a href="/cashalot/advertiser/" class="btn btn-default">Кабинет рекламодателя</a>
-    <a href="../moderator/orders" class="btn btn-default">Кабинет модератора</a>
+    <a href="/cashalot/moderator/orders" class="btn btn-default">Кабинет модератора</a>
 </div>
 </body>
 </html>

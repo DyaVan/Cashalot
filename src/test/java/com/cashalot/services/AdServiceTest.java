@@ -19,19 +19,51 @@ public class AdServiceTest {
 
     AdService service;
 
-//    @Test
-//    public void createAdvertisement() throws Exception {
-//        AdContent content = Mockito.mock(AdContent.class);
-//        Quiz test = Mockito.mock(Quiz.class);
-//        Subject subject = Mockito.mock(Subject.class);
-//
-//        Advertisement ad = service.createAdvertisement(subject, content, test,100);
-//
-//        Assert.assertNotNull(ad);
-//    }
-//
-//    public void createAdContent() {
-//
-//    }
+    @Test
+    public void createAdvertisement() throws Exception {
+
+        Assert.assertNotNull(true);
+    }
+
+    @Test
+    public void deleteAdvertisement() throws Exception {
+
+        Assert.assertNotNull(true);
+    }
+
+
+    @Test
+    public void getAdsForUser() throws Exception {
+
+        Assert.assertNotNull(true);
+    }
+
+
+    @Test
+    public void checkAnswers() throws Exception {
+
+        Assert.assertNotNull(true);
+    }
+
+
+    @Test
+    public void validateAd() throws Exception {
+
+        Assert.assertNotNull(true);
+    }
+
+
+    @Test
+    public void generateAdsForUser() throws Exception {
+
+        Assert.assertNotNull(true);
+    }
+
+
+
+
+    public void createAdContent() {
+
+    }
 
 }

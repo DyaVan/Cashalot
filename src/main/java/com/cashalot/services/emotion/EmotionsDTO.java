@@ -2,11 +2,21 @@ package com.cashalot.services.emotion;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties
-public class EmotionsDTO {
+public class EmotionsDTO implements Serializable {
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("EmotionsDTO{");
+        sb.append("emotions=").append(emotions);
+        sb.append('}');
+        return sb.toString();
+    }
+
     public EmotionsDTO() {
     }
 

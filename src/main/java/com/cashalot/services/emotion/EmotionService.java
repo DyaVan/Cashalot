@@ -4,6 +4,7 @@ import com.cashalot.domain.appflow.Emotion;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -18,23 +19,49 @@ import java.util.List;
 public class EmotionService {
 
 
-    Emotion extractEmotion(){
+    public Emotion extractEmotion(String photo1, String photo2, String photo3, String photo4, String photo5){
         RestTemplate restTemplate = new RestTemplate();
 
         EmotionPhotosDTO dto = new EmotionPhotosDTO();
-        dto.photos.add(new EmotionPhotosDTO.PhotoItem(1, "lol"));
-        dto.photos.add(new EmotionPhotosDTO.PhotoItem(2, ""));
+        dto.photos.add(new EmotionPhotosDTO.PhotoItem(1, photo1));
+        dto.photos.add(new EmotionPhotosDTO.PhotoItem(2, photo1));
+        dto.photos.add(new EmotionPhotosDTO.PhotoItem(3, photo1));
+        dto.photos.add(new EmotionPhotosDTO.PhotoItem(4, photo1));
+        dto.photos.add(new EmotionPhotosDTO.PhotoItem(5, photo1));
+//        dto.photos.add(new EmotionPhotosDTO.PhotoItem(2, ""));
 
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
 
-        String url = "http://emotion:api@127.0.0.1:5000/api/PostImage";
+//        String url = "http://emotion:api@127.0.0.1:5000/api/PostImage";
+        String url = "http://75a1bb55.ngrok.io/api/PostImage";
 
         String[] quotes = new String[]{"lol", "kek"};
 
-        restTemplate.postForObject(url, quotes, EmotionsDTO.class, "parameter");
 
 
+        ResponseEntity<String> response
+                = restTemplate.postForEntity(url, dto.photos, String.class);
+
+        System.out.println(response.toString());
+
+
+        ObjectMapper mapper = new ObjectMapper();
+        CollectionType javaType = mapper.getTypeFactory()
+                .constructCollectionType(List.class, EmotionsDTO.class);
+
+        try {
+            String json = mapper.writeValueAsString(response);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+
+        EmotionsDTO[] emotionsDTO  = restTemplate.postForObject(url, dto.photos, EmotionsDTO[].class);
+
+
+
+        System.out.println(emotionsDTO);
         return null;
     }
 

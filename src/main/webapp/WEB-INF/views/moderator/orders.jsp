@@ -25,17 +25,14 @@
 
 
         <h2>Список заказов</h2>
-        <div class="list-group">
-            <a href="affirmation" class="list-group-item">
-                <h4 class="list-group-item-heading">Темное крафтовое пиво!</h4>
-                <p class="list-group-item-text">Дата заказа: 5.07.2017</p>
-            </a>
-            <a href="affirmation" class="list-group-item">
-                <h4 class="list-group-item-heading">Депозиты от Приват Банка!</h4>
-                <p class="list-group-item-text">Дата заказа: 3.07.2017</p>
-            </a>
-        </div>
-
+        <c:forEach items="${orders}" var="order">
+            <div class="list-group">
+                <a href="/cashalot/moderator/orders/${order.id}" class="list-group-item">
+                    <h4 class="list-group-item-heading">${order.content.topic}</h4>
+                    <p class="list-group-item-text">Дата заказа: ${order.orderDate}</p>
+                </a>
+            </div>
+        </c:forEach>
 
 
     </div>

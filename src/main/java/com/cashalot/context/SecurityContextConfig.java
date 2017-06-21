@@ -42,6 +42,12 @@ public class SecurityContextConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").anonymous()
                 .antMatchers("/reg").anonymous()
 
+                .antMatchers("/cashalot/moderator").authenticated()
+                .antMatchers("/cashalot/moderator/**").authenticated()
+                .antMatchers("/cashalot/moderator").hasAnyAuthority("moderator","admin")
+                .antMatchers("/cashalot/moderator/**").hasAnyAuthority("moderator","admin")
+
+
                 .antMatchers("/cashalot/user").authenticated()
                 .antMatchers("/cashalot/user/**").authenticated()
                 .antMatchers("/cashalot/user").hasAnyAuthority("user")

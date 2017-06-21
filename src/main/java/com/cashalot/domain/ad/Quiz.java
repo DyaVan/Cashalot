@@ -3,6 +3,8 @@ package com.cashalot.domain.ad;
 import com.cashalot.domain.actors.Advertiser;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -26,16 +28,20 @@ public class Quiz {
     @JoinColumn(name = "advertiserId", referencedColumnName = "id")
     private Advertiser advertiser;
 
+    public List<String> getDecoupledAnswerOptions() {
+        return Arrays.asList(answerOptions.split("\\|&\\|"));
+    }
 
-    public String getAnswerOptions(){
+
+    public String getAnswerOptions() {
         return answerOptions;
     }
 
-    public String getAnswer(){
+    public String getAnswer() {
         return answer;
     }
 
-    public String getQuestionText(){
+    public String getQuestionText() {
         return questionText;
     }
 
@@ -66,4 +72,5 @@ public class Quiz {
     public void setAdvertiser(Advertiser advertiser) {
         this.advertiser = advertiser;
     }
+
 }

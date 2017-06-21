@@ -30,6 +30,7 @@ public class FileLoaderController {
         }
 
         System.out.println(test.getStr());
+        System.out.println(test.getStartDate());
         test.getStrings().forEach(s -> System.out.println(s));
         storageService.store(test.getFile(),"image",0L);
 //        redirectAttributes.addFlashAttribute("message",

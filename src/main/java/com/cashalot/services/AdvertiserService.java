@@ -4,6 +4,7 @@ import com.cashalot.domain.actors.Advertiser;
 import com.cashalot.domain.actors.AuthorizationDetails;
 import com.cashalot.domain.ad.AdContent;
 import com.cashalot.domain.ad.Quiz;
+import com.cashalot.domain.appflow.Order;
 import com.cashalot.domain.appflow.TagBinding;
 import com.cashalot.domain.subject.Category;
 import com.cashalot.domain.subject.Subject;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -153,5 +155,43 @@ public class AdvertiserService {
 
         AdContent adContent = adContentRepository.saveAndFlush(newAdContent);
         storageService.store(mediaFile,contentType,adContent.getId());
+    }
+
+    @Autowired
+    AdContentRepository contentRepository;
+
+    @Autowired
+    OrderRepository orderRepository;
+
+    public void createOrder(String advertiserEmail,
+                            Long contentId,
+                            Long quizId,
+                            Long subjectId,
+                            int cost,
+                            int totalViews,
+                            int viewsPerUser,
+                            Date endDate,
+                            Date startDate,
+                            boolean ageLimited, byte maxAge, byte minAge, boolean sexLimited, boolean sex) {
+
+        Order newOrder = new Order();
+        newOrder.setAdvertiser(advertiserRepository.findByEmailLogin(advertiserEmail));
+        newOrder.setContent(contentRepository.findOne(contentId));
+        newOrder.setQuiz(quizRepository.findOne(quizId));
+        newOrder.setSubject(subjectRepository.findOne(subjectId));
+        newOrder.setCost(cost);
+        newOrder.setTotalViews(totalViews);
+        newOrder.setViewsPerUser(viewsPerUser);
+        newOrder.setEndDate(endDate);
+        newOrder.setStartDate(startDate);
+        newOrder.setAgeLimited(ageLimited);
+        newOrder.setMaxAge(maxAge);
+        newOrder.setMinAge(minAge);
+        newOrder.setSexLimited(sexLimited);
+        newOrder.setSex(sex);
+        newOrder.setStatus(Order.PROCESSING_STATUS);
+        newOrder.setOrderDate(new Date());
+
+        orderRepository.save(newOrder);
     }
 }

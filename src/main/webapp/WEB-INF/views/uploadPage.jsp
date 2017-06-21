@@ -20,7 +20,9 @@
         <sf:input path="str"/>
         <sf:input path="strings"/>
         <sf:input path="strings"/>
-        <sf:input path="strings"/>
+
+        <sf:input type="text"  path="startDate"  placeholder="dd/MM/yyyy"/>
+        <sf:errors path="startDate"/>
 
         <br>
         File to upload:

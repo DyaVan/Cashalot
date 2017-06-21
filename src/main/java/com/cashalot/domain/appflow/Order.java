@@ -13,6 +13,11 @@ import java.util.Date;
 @Table(name = "orders")
 public class Order {
 
+    public static final String PROCESSING_STATUS = "processing";
+    public static final String APPROVED_STATUS = "approved";
+    public static final String REJECTED_STATUS = "rejected";
+    public static final String OUTDATED_STATUS = "outdated";
+
     @Id
     @GeneratedValue
     private long id;
@@ -21,7 +26,7 @@ public class Order {
     private Date orderDate;
 
     @Column
-    private String status; // processing - Approved - rejected - outdated
+    private String status;
 
     @Column
     private String rejectionComment;

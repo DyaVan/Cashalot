@@ -153,7 +153,7 @@ public class AdvertiserController {
     public String showNewOrderPage(Model model,
             @ModelAttribute(name = "order") OrderDTO orderDTO,
                                    Principal principal) {
-        System.out.println(principal.getName());
+
         model.addAttribute("advertiser", advertiserRepository.findByEmailLogin(principal.getName()));
 
 
@@ -163,7 +163,24 @@ public class AdvertiserController {
     @RequestMapping(value = "/newOrder", method = RequestMethod.POST)
     public String createNewOrder(@ModelAttribute(name = "order") @Valid OrderDTO orderDTO,
                                  Principal principal, Model model) {
+
+        System.out.println(orderDTO);
         System.out.println(principal.getName());
+
+        advertiserService.createOrder(principal.getName(),orderDTO.getContentId(),
+                orderDTO.getQuizId(),
+                orderDTO.getSubjectId(),
+                orderDTO.getCost(),
+                orderDTO.getTotalViews(),
+                orderDTO.getViewsPerUser(),
+                orderDTO.getEndDate(),
+                orderDTO.getStartDate(),
+                orderDTO.isAgeLimited(),
+                orderDTO.getMaxAge(),
+                orderDTO.getMinAge(),
+                orderDTO.isSexLimited(),
+                orderDTO.isSex());
+
         return "advertiser/newOrder";
     }
 

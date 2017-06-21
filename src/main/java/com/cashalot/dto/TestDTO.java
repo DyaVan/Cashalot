@@ -2,9 +2,11 @@ package com.cashalot.dto;
 
 
 import com.cashalot.validation.annotations.ValidMediaFile;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TestDTO {
@@ -23,6 +25,16 @@ public class TestDTO {
     @ValidMediaFile
     private MultipartFile file;
 
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date startDate;
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
 
     public List<String> getStrings() {
         return strings;
